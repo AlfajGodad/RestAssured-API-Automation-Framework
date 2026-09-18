@@ -13,6 +13,7 @@
     <classes>
       <class name="api.tests.DataDrivenTests"/>
       <class name="api.tests.UserTests"/>
+      <class name="api.tests.NegativeUserTests"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
