@@ -11,9 +11,11 @@ on:
 
 jobs:
   api-tests:
+
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -26,3 +28,21 @@ jobs:
 
       - name: Run REST Assured Tests
         run: mvn clean test
+
+      - name: Upload Extent Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: extent-api-test-report
+          path: reports/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Upload Test Logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-test-logs
+          path: logs/
+          if-no-files-found: warn
+          retention-days: 30
